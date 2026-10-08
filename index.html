@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Meu Financeiro</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #0b0f0d;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* MENU LATERAL */
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: #101612;
+            border-right: 1px solid #1f2a23;
+            padding: 25px 18px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 45px;
+            padding-left: 10px;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: #20d66b;
+            color: #061109;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .logo h1 {
+            font-size: 19px;
+            letter-spacing: 0.3px;
+        }
+
+        .menu-title {
+            color: #66736b;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 0 0 12px 12px;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .menu button {
+            border: none;
+            background: transparent;
+            color: #aab4ae;
+            padding: 13px 14px;
+            border-radius: 10px;
+            text-align: left;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .menu button:hover {
+            background: #172019;
+            color: #ffffff;
+        }
+
+        .menu button.active {
+            background: #173b25;
+            color: #35e979;
+        }
+
+        /* CONTEÚDO */
+
+        .main {
+            margin-left: 250px;
+            padding: 35px;
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .top h2 {
+            font-size: 28px;
+        }
+
+        .top p {
+            color: #7e8982;
+            margin-top: 6px;
+            font-size: 14px;
+        }
+
+        .date {
+            background: #111812;
+            border: 1px solid #243028;
+            padding: 10px 15px;
+            border-radius: 10px;
+            color: #aab4ae;
+            font-size: 13px;
+        }
+
+        /* CARDS */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: #111712;
+            border: 1px solid #202b24;
+            border-radius: 16px;
+            padding: 22px;
+            min-height: 145px;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            color: #849088;
+            font-size: 13px;
+        }
+
+        .card-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            background: #17231b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-value {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .green {
+            color: #35e979;
+        }
+
+        .red {
+            color: #ff5c5c;
+        }
+
+        /* ÁREA INFERIOR */
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 20px;
+        }
+
+        .panel {
+            background: #111712;
+            border: 1px solid #202b24;
+            border-radius: 16px;
+            padding: 22px;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .panel-header h3 {
+            font-size: 17px;
+        }
+
+        .panel-header span {
+            color: #35e979;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        /* GASTOS */
+
+        .expense {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #202820;
+        }
+
+        .expense:last-child {
+            border-bottom: none;
+        }
+
+        .expense-left {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .expense-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: #19221c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .expense-name {
+            font-size: 14px;
+        }
+
+        .expense-info {
+            color: #707b74;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .expense-value {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* COFRE */
+
+        .safe {
+            text-align: center;
+        }
+
+        .safe-icon {
+            width: 80px;
+            height: 80px;
+            margin: 5px auto 18px;
+            border-radius: 50%;
+            background: #173b25;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+        }
+
+        .safe-value {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .safe-goal {
+            color: #7e8982;
+            font-size: 13px;
+            margin-top: 7px;
+        }
+
+        .progress {
+            height: 9px;
+            background: #202a23;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 20px 0 8px;
+        }
+
+        .progress-bar {
+            width: 25%;
+            height: 100%;
+            background: #20d66b;
+            border-radius: 20px;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            color: #78837c;
+            font-size: 12px;
+        }
+
+        /* RESPONSIVO */
+
+        @media (max-width: 1100px) {
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid #1f2a23;
+            }
+
+            .main {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .logo {
+                margin-bottom: 20px;
+            }
+
+            .menu {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .top {
+                align-items: flex-start;
+                gap: 15px;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MENU -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                $
+            </div>
+
+            <h1>Meu Financeiro</h1>
+
+        </div>
+
+        <div class="menu-title">
+            Menu
+        </div>
+
+        <nav class="menu">
+
+            <button class="active">
+                🏠 Dashboard
+            </button>
+
+            <button>
+                💳 Cartões
+            </button>
+
+            <button>
+                🧾 Gastos
+            </button>
+
+            <button>
+                📅 Parcelas
+            </button>
+
+            <button>
+                🔐 Cofre
+            </button>
+
+            <button>
+                🎯 Metas
+            </button>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- CONTEÚDO -->
+
+    <main class="main">
+
+        <div class="top">
+
+            <div>
+
+                <h2>Olá! 👋</h2>
+
+                <p>
+                    Aqui está um resumo das suas finanças.
+                </p>
+
+            </div>
+
+            <div class="date">
+                Outubro 2026
+            </div>
+
+        </div>
+
+
+        <!-- CARDS -->
+
+        <section class="cards">
+
+            <div class="card">
+
+                <div class="card-top">
+
+                    <span class="card-title">
+                        Saldo disponível
+                    </span>
+
+                    <div class="card-icon">
+                        💰
+                    </div>
+
+                </div>
+
+                <div class="card-value green">
+                    R$ 0,00
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-top">
+
+                    <span class="card-title">
+                        Cartões
+                    </span>
+
+                    <div class="card-icon">
+                        💳
+                    </div>
+
+                </div>
+
+                <div class="card-value">
+                    R$ 0,00
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-top">
+
+                    <span class="card-title">
+                        Parcelas futuras
+                    </span>
+
+                    <div class="card-icon">
+                        📅
+                    </div>
+
+                </div>
+
+                <div class="card-value red">
+                    R$ 0,00
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-top">
+
+                    <span class="card-title">
+                        Cofre
+                    </span>
+
+                    <div class="card-icon">
+                        🔐
+                    </div>
+
+                </div>
+
+                <div class="card-value green">
+                    R$ 0,00
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PARTE INFERIOR -->
+
+        <section class="content-grid">
+
+
+            <!-- ÚLTIMOS GASTOS -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h3>
+                        Últimos gastos
+                    </h3>
+
+                    <span>
+                        Ver todos
+                    </span>
+
+                </div>
+
+
+                <div class="expense">
+
+                    <div class="expense-left">
+
+                        <div class="expense-icon">
+                            🛒
+                        </div>
+
+                        <div>
+
+                            <div class="expense-name">
+                                Nenhum gasto cadastrado
+                            </div>
+
+                            <div class="expense-info">
+                                Seus gastos aparecerão aqui
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="expense-value">
+                        —
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- COFRE -->
+
+            <div class="panel safe">
+
+                <div class="panel-header">
+
+                    <h3>
+                        🔐 Meu Cofre
+                    </h3>
+
+                    <span>
+                        Abrir
+                    </span>
+
+                </div>
+
+
+                <div class="safe-icon">
+                    💰
+                </div>
+
+                <div class="safe-value green">
+                    R$ 0,00
+                </div>
+
+                <div class="safe-goal">
+                    Meta: R$ 7.260,00
+                </div>
+
+
+                <div class="progress">
+
+                    <div class="progress-bar"></div>
+
+                </div>
+
+                <div class="progress-text">
+
+                    <span>
+                        0% concluído
+                    </span>
+
+                    <span>
+                        R$ 7.260
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
