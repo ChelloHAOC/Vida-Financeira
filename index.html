@@ -20,7 +20,19 @@
             min-height: 100vh;
         }
 
-        /* MENU LATERAL */
+        button,
+        input,
+        select {
+            font-family: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        /* =========================
+           MENU
+        ========================= */
 
         .sidebar {
             position: fixed;
@@ -31,6 +43,7 @@
             background: #101612;
             border-right: 1px solid #1f2a23;
             padding: 25px 18px;
+            z-index: 10;
         }
 
         .logo {
@@ -56,7 +69,6 @@
 
         .logo h1 {
             font-size: 19px;
-            letter-spacing: 0.3px;
         }
 
         .menu-title {
@@ -80,7 +92,6 @@
             padding: 13px 14px;
             border-radius: 10px;
             text-align: left;
-            cursor: pointer;
             font-size: 14px;
             transition: 0.2s;
         }
@@ -95,11 +106,21 @@
             color: #35e979;
         }
 
-        /* CONTEÚDO */
+        /* =========================
+           CONTEÚDO
+        ========================= */
 
         .main {
             margin-left: 250px;
             padding: 35px;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
         }
 
         .top {
@@ -128,7 +149,9 @@
             font-size: 13px;
         }
 
-        /* CARDS */
+        /* =========================
+           CARDS
+        ========================= */
 
         .cards {
             display: grid;
@@ -180,7 +203,9 @@
             color: #ff5c5c;
         }
 
-        /* ÁREA INFERIOR */
+        /* =========================
+           PAINÉIS
+        ========================= */
 
         .content-grid {
             display: grid;
@@ -209,10 +234,46 @@
         .panel-header span {
             color: #35e979;
             font-size: 13px;
-            cursor: pointer;
         }
 
-        /* GASTOS */
+        /* =========================
+           BOTÕES
+        ========================= */
+
+        .btn-primary {
+            border: none;
+            background: #20d66b;
+            color: #061109;
+            padding: 11px 17px;
+            border-radius: 9px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: #35e979;
+            transform: translateY(-1px);
+        }
+
+        .btn-danger {
+            border: none;
+            background: #3a1717;
+            color: #ff6969;
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+
+        .btn-secondary {
+            border: 1px solid #29362e;
+            background: #151d17;
+            color: #b8c2bc;
+            padding: 10px 15px;
+            border-radius: 9px;
+        }
+
+        /* =========================
+           GASTOS
+        ========================= */
 
         .expense {
             display: flex;
@@ -257,7 +318,9 @@
             font-size: 14px;
         }
 
-        /* COFRE */
+        /* =========================
+           COFRE
+        ========================= */
 
         .safe {
             text-align: center;
@@ -295,10 +358,11 @@
         }
 
         .progress-bar {
-            width: 25%;
+            width: 0%;
             height: 100%;
             background: #20d66b;
             border-radius: 20px;
+            transition: width 0.4s;
         }
 
         .progress-text {
@@ -308,7 +372,336 @@
             font-size: 12px;
         }
 
-        /* RESPONSIVO */
+        /* =========================
+           TÍTULOS DAS PÁGINAS
+        ========================= */
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .page-header h2 {
+            font-size: 28px;
+        }
+
+        /* =========================
+           CARTÕES
+        ========================= */
+
+        .cards-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .credit-card {
+            background: linear-gradient(135deg, #15251a, #101612);
+            border: 1px solid #294432;
+            border-radius: 18px;
+            padding: 22px;
+            min-height: 210px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .credit-card::after {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(32, 214, 107, 0.05);
+            right: -60px;
+            top: -60px;
+        }
+
+        .credit-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .credit-card-name {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .credit-card-number {
+            color: #77837b;
+            font-size: 13px;
+        }
+
+        .limit-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 12px;
+            color: #89958e;
+        }
+
+        .limit-bar {
+            width: 100%;
+            height: 8px;
+            background: #202a23;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .limit-fill {
+            height: 100%;
+            background: #20d66b;
+            border-radius: 10px;
+        }
+
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 18px;
+        }
+
+        .small-info {
+            color: #77837b;
+            font-size: 11px;
+        }
+
+        .small-info strong {
+            display: block;
+            color: #ffffff;
+            font-size: 13px;
+            margin-top: 3px;
+        }
+
+        /* =========================
+           TABELAS
+        ========================= */
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            color: #68746d;
+            font-size: 11px;
+            text-align: left;
+            padding: 13px;
+            border-bottom: 1px solid #243028;
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 15px 13px;
+            border-bottom: 1px solid #1d261f;
+            font-size: 13px;
+        }
+
+        tr:hover {
+            background: #141c16;
+        }
+
+        .empty {
+            text-align: center;
+            color: #667169;
+            padding: 35px;
+        }
+
+        /* =========================
+           FORMULÁRIOS
+        ========================= */
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            color: #8d9991;
+            font-size: 12px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px 13px;
+            border-radius: 9px;
+            border: 1px solid #29362e;
+            background: #0d120f;
+            color: #ffffff;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #20d66b;
+        }
+
+        .form-actions {
+            margin-top: 20px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        /* =========================
+           COFRE 120
+        ========================= */
+
+        .safe-page {
+            background: #111712;
+            border: 1px solid #202b24;
+            border-radius: 18px;
+            padding: 25px;
+        }
+
+        .safe-summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .safe-stat {
+            background: #0d120f;
+            border: 1px solid #202b24;
+            border-radius: 13px;
+            padding: 18px;
+        }
+
+        .safe-stat span {
+            display: block;
+            color: #718078;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .safe-stat strong {
+            font-size: 22px;
+        }
+
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 9px;
+        }
+
+        .challenge {
+            aspect-ratio: 1;
+            border: 1px solid #2a372e;
+            background: #151c17;
+            color: #9da8a1;
+            border-radius: 9px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .challenge:hover {
+            border-color: #20d66b;
+            color: #35e979;
+            transform: translateY(-2px);
+        }
+
+        .challenge.completed {
+            background: #20d66b;
+            color: #061109;
+            border-color: #20d66b;
+            box-shadow: 0 0 12px rgba(32, 214, 107, 0.25);
+        }
+
+        /* =========================
+           MODAL
+        ========================= */
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 100;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-box {
+            width: 100%;
+            max-width: 520px;
+            background: #111712;
+            border: 1px solid #29362e;
+            border-radius: 18px;
+            padding: 25px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .modal-header h3 {
+            font-size: 20px;
+        }
+
+        .close {
+            border: none;
+            background: transparent;
+            color: #77837b;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        /* =========================
+           TOAST
+        ========================= */
+
+        .toast {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #20d66b;
+            color: #061109;
+            padding: 13px 18px;
+            border-radius: 10px;
+            font-weight: bold;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: 0.3s;
+            z-index: 200;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* =========================
+           RESPONSIVO
+        ========================= */
 
         @media (max-width: 1100px) {
 
@@ -316,8 +709,16 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
+            .cards-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .content-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .challenge-grid {
+                grid-template-columns: repeat(8, 1fr);
             }
         }
 
@@ -349,10 +750,38 @@
                 grid-template-columns: 1fr;
             }
 
+            .cards-list {
+                grid-template-columns: 1fr;
+            }
+
             .top {
                 align-items: flex-start;
                 gap: 15px;
                 flex-direction: column;
+            }
+
+            .page-header {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .safe-summary {
+                grid-template-columns: 1fr;
+            }
+
+            .challenge-grid {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 6px;
+            }
+
+            .challenge {
+                border-radius: 7px;
+                font-size: 11px;
             }
         }
     </style>
@@ -360,7 +789,9 @@
 
 <body>
 
-    <!-- MENU -->
+    <!-- =========================
+         MENU
+    ========================= -->
 
     <aside class="sidebar">
 
@@ -380,27 +811,27 @@
 
         <nav class="menu">
 
-            <button class="active">
+            <button class="menu-btn active" data-page="dashboard">
                 🏠 Dashboard
             </button>
 
-            <button>
+            <button class="menu-btn" data-page="cartoes">
                 💳 Cartões
             </button>
 
-            <button>
+            <button class="menu-btn" data-page="gastos">
                 🧾 Gastos
             </button>
 
-            <button>
+            <button class="menu-btn" data-page="parcelas">
                 📅 Parcelas
             </button>
 
-            <button>
+            <button class="menu-btn" data-page="cofre">
                 🔐 Cofre
             </button>
 
-            <button>
+            <button class="menu-btn" data-page="metas">
                 🎯 Metas
             </button>
 
@@ -409,112 +840,282 @@
     </aside>
 
 
-    <!-- CONTEÚDO -->
+    <!-- =========================
+         CONTEÚDO
+    ========================= -->
 
     <main class="main">
 
-        <div class="top">
 
-            <div>
+        <!-- =========================
+             DASHBOARD
+        ========================= -->
 
-                <h2>Olá! 👋</h2>
+        <section class="page active" id="dashboard">
 
-                <p>
-                    Aqui está um resumo das suas finanças.
-                </p>
+            <div class="top">
+
+                <div>
+
+                    <h2>Olá! 👋</h2>
+
+                    <p>
+                        Aqui está um resumo das suas finanças.
+                    </p>
+
+                </div>
+
+                <div class="date" id="currentDate">
+                    Outubro 2026
+                </div>
 
             </div>
 
-            <div class="date">
-                Outubro 2026
-            </div>
 
-        </div>
+            <section class="cards">
+
+                <div class="card">
+
+                    <div class="card-top">
+
+                        <span class="card-title">
+                            Saldo disponível
+                        </span>
+
+                        <div class="card-icon">
+                            💰
+                        </div>
+
+                    </div>
+
+                    <div class="card-value green">
+                        R$ 0,00
+                    </div>
+
+                </div>
 
 
-        <!-- CARDS -->
+                <div class="card">
 
-        <section class="cards">
+                    <div class="card-top">
 
-            <div class="card">
+                        <span class="card-title">
+                            Cartões
+                        </span>
 
-                <div class="card-top">
+                        <div class="card-icon">
+                            💳
+                        </div>
 
-                    <span class="card-title">
-                        Saldo disponível
-                    </span>
+                    </div>
 
-                    <div class="card-icon">
+                    <div class="card-value" id="dashboardCards">
+                        R$ 0,00
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-top">
+
+                        <span class="card-title">
+                            Parcelas futuras
+                        </span>
+
+                        <div class="card-icon">
+                            📅
+                        </div>
+
+                    </div>
+
+                    <div class="card-value red" id="dashboardInstallments">
+                        R$ 0,00
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-top">
+
+                        <span class="card-title">
+                            Cofre
+                        </span>
+
+                        <div class="card-icon">
+                            🔐
+                        </div>
+
+                    </div>
+
+                    <div class="card-value green" id="dashboardSafe">
+                        R$ 0,00
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="content-grid">
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <h3>
+                            Últimos gastos
+                        </h3>
+
+                        <span onclick="showPage('gastos')" style="cursor:pointer;">
+                            Ver todos
+                        </span>
+
+                    </div>
+
+                    <div id="dashboardExpenses">
+                    </div>
+
+                </div>
+
+
+                <div class="panel safe">
+
+                    <div class="panel-header">
+
+                        <h3>
+                            🔐 Meu Cofre
+                        </h3>
+
+                        <span onclick="showPage('cofre')" style="cursor:pointer;">
+                            Abrir
+                        </span>
+
+                    </div>
+
+
+                    <div class="safe-icon">
                         💰
                     </div>
 
-                </div>
+                    <div class="safe-value green" id="dashboardSafeBig">
+                        R$ 0,00
+                    </div>
 
-                <div class="card-value green">
-                    R$ 0,00
-                </div>
-
-            </div>
+                    <div class="safe-goal">
+                        Meta: R$ 7.260,00
+                    </div>
 
 
-            <div class="card">
+                    <div class="progress">
 
-                <div class="card-top">
+                        <div class="progress-bar" id="dashboardProgress">
+                        </div>
 
-                    <span class="card-title">
-                        Cartões
-                    </span>
+                    </div>
 
-                    <div class="card-icon">
-                        💳
+
+                    <div class="progress-text">
+
+                        <span id="dashboardProgressText">
+                            0% concluído
+                        </span>
+
+                        <span>
+                            R$ 7.260
+                        </span>
+
                     </div>
 
                 </div>
 
-                <div class="card-value">
-                    R$ 0,00
+            </section>
+
+        </section>
+
+
+        <!-- =========================
+             CARTÕES
+        ========================= -->
+
+        <section class="page" id="cartoes">
+
+            <div class="page-header">
+
+                <div>
+                    <h2>💳 Meus cartões</h2>
+
+                    <p style="color:#7e8982;margin-top:6px;">
+                        Controle seus limites e cartões.
+                    </p>
                 </div>
+
+                <button class="btn-primary" onclick="openCardModal()">
+                    + Adicionar cartão
+                </button>
 
             </div>
 
 
-            <div class="card">
+            <div class="cards-list" id="cardsList">
+            </div>
 
-                <div class="card-top">
+        </section>
 
-                    <span class="card-title">
-                        Parcelas futuras
-                    </span>
 
-                    <div class="card-icon">
-                        📅
-                    </div>
+        <!-- =========================
+             GASTOS
+        ========================= -->
+
+        <section class="page" id="gastos">
+
+            <div class="page-header">
+
+                <div>
+
+                    <h2>🧾 Gastos</h2>
+
+                    <p style="color:#7e8982;margin-top:6px;">
+                        Todas as suas compras.
+                    </p>
 
                 </div>
 
-                <div class="card-value red">
-                    R$ 0,00
-                </div>
+                <button class="btn-primary" onclick="openExpenseModal()">
+                    + Adicionar gasto
+                </button>
 
             </div>
 
 
-            <div class="card">
+            <div class="panel">
 
-                <div class="card-top">
+                <div class="table-wrapper">
 
-                    <span class="card-title">
-                        Cofre
-                    </span>
+                    <table>
 
-                    <div class="card-icon">
-                        🔐
-                    </div>
+                        <thead>
 
-                </div>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Cartão</th>
+                                <th>Valor</th>
+                                <th>Parcelas</th>
+                                <th>Parcela</th>
+                                <th>Ação</th>
+                            </tr>
 
-                <div class="card-value green">
-                    R$ 0,00
+                        </thead>
+
+                        <tbody id="expensesTable">
+                        </tbody>
+
+                    </table>
+
                 </div>
 
             </div>
@@ -522,104 +1123,180 @@
         </section>
 
 
-        <!-- PARTE INFERIOR -->
+        <!-- =========================
+             PARCELAS
+        ========================= -->
 
-        <section class="content-grid">
+        <section class="page" id="parcelas">
 
+            <div class="page-header">
 
-            <!-- ÚLTIMOS GASTOS -->
+                <div>
 
-            <div class="panel">
+                    <h2>📅 Parcelas</h2>
 
-                <div class="panel-header">
-
-                    <h3>
-                        Últimos gastos
-                    </h3>
-
-                    <span>
-                        Ver todos
-                    </span>
-
-                </div>
-
-
-                <div class="expense">
-
-                    <div class="expense-left">
-
-                        <div class="expense-icon">
-                            🛒
-                        </div>
-
-                        <div>
-
-                            <div class="expense-name">
-                                Nenhum gasto cadastrado
-                            </div>
-
-                            <div class="expense-info">
-                                Seus gastos aparecerão aqui
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="expense-value">
-                        —
-                    </div>
+                    <p style="color:#7e8982;margin-top:6px;">
+                        Veja tudo que ainda está comprometido.
+                    </p>
 
                 </div>
 
             </div>
 
 
-            <!-- COFRE -->
+            <div class="panel">
 
-            <div class="panel safe">
+                <div class="table-wrapper">
 
-                <div class="panel-header">
+                    <table>
 
-                    <h3>
-                        🔐 Meu Cofre
-                    </h3>
+                        <thead>
 
-                    <span>
-                        Abrir
-                    </span>
+                            <tr>
+                                <th>Compra</th>
+                                <th>Cartão</th>
+                                <th>Parcela</th>
+                                <th>Valor</th>
+                                <th>Status</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="installmentsTable">
+                        </tbody>
+
+                    </table>
 
                 </div>
 
+            </div>
 
-                <div class="safe-icon">
-                    💰
+        </section>
+
+
+        <!-- =========================
+             COFRE
+        ========================= -->
+
+        <section class="page" id="cofre">
+
+            <div class="page-header">
+
+                <div>
+
+                    <h2>🔐 Meu Cofre</h2>
+
+                    <p style="color:#7e8982;margin-top:6px;">
+                        Clique nos valores que você já depositou.
+                    </p>
+
                 </div>
 
-                <div class="safe-value green">
-                    R$ 0,00
-                </div>
+            </div>
 
-                <div class="safe-goal">
-                    Meta: R$ 7.260,00
+
+            <div class="safe-page">
+
+
+                <div class="safe-summary">
+
+                    <div class="safe-stat">
+
+                        <span>
+                            Guardado
+                        </span>
+
+                        <strong class="green" id="safeTotal">
+                            R$ 0,00
+                        </strong>
+
+                    </div>
+
+
+                    <div class="safe-stat">
+
+                        <span>
+                            Falta guardar
+                        </span>
+
+                        <strong id="safeRemaining">
+                            R$ 7.260,00
+                        </strong>
+
+                    </div>
+
+
+                    <div class="safe-stat">
+
+                        <span>
+                            Progresso
+                        </span>
+
+                        <strong class="green" id="safePercent">
+                            0%
+                        </strong>
+
+                    </div>
+
                 </div>
 
 
                 <div class="progress">
 
-                    <div class="progress-bar"></div>
+                    <div class="progress-bar" id="safeProgress">
+                    </div>
 
                 </div>
 
-                <div class="progress-text">
 
-                    <span>
-                        0% concluído
-                    </span>
+                <div style="height:20px;"></div>
 
-                    <span>
-                        R$ 7.260
-                    </span>
+
+                <div class="challenge-grid" id="challengeGrid">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             METAS
+        ========================= -->
+
+        <section class="page" id="metas">
+
+            <div class="page-header">
+
+                <div>
+
+                    <h2>🎯 Metas</h2>
+
+                    <p style="color:#7e8982;margin-top:6px;">
+                        Área reservada para suas metas financeiras.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div style="text-align:center;padding:50px 20px;">
+
+                    <div style="font-size:50px;margin-bottom:15px;">
+                        🎯
+                    </div>
+
+                    <h3 style="margin-bottom:10px;">
+                        Em construção
+                    </h3>
+
+                    <p style="color:#758078;">
+                        Em breve você poderá criar metas como carro,
+                        viagem, reserva de emergência e muito mais.
+                    </p>
 
                 </div>
 
@@ -627,7 +1304,1443 @@
 
         </section>
 
+
     </main>
+
+
+    <!-- =========================
+         MODAL CARTÃO
+    ========================= -->
+
+    <div class="modal" id="cardModal">
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+
+                <h3>
+                    Adicionar cartão
+                </h3>
+
+                <button class="close" onclick="closeModal('cardModal')">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="cardForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group full">
+
+                        <label>
+                            Nome do cartão
+                        </label>
+
+                        <input
+                            type="text"
+                            id="cardName"
+                            placeholder="Ex: Nubank"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Limite
+                        </label>
+
+                        <input
+                            type="number"
+                            id="cardLimit"
+                            step="0.01"
+                            min="0"
+                            placeholder="2500"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Dia de fechamento
+                        </label>
+
+                        <input
+                            type="number"
+                            id="cardClosing"
+                            min="1"
+                            max="31"
+                            placeholder="5"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Dia de vencimento
+                        </label>
+
+                        <input
+                            type="number"
+                            id="cardDue"
+                            min="1"
+                            max="31"
+                            placeholder="10"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="btn-secondary"
+                        onclick="closeModal('cardModal')"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn-primary"
+                    >
+                        Salvar cartão
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MODAL GASTO
+    ========================= -->
+
+    <div class="modal" id="expenseModal">
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+
+                <h3>
+                    Adicionar gasto
+                </h3>
+
+                <button class="close" onclick="closeModal('expenseModal')">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="expenseForm">
+
+                <div class="form-grid">
+
+
+                    <div class="form-group full">
+
+                        <label>
+                            Nome do produto / serviço
+                        </label>
+
+                        <input
+                            type="text"
+                            id="expenseName"
+                            placeholder="Ex: Tênis Nike"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Cartão
+                        </label>
+
+                        <select id="expenseCard" required>
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Valor total
+                        </label>
+
+                        <input
+                            type="number"
+                            id="expenseValue"
+                            step="0.01"
+                            min="0"
+                            placeholder="300"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Número de parcelas
+                        </label>
+
+                        <input
+                            type="number"
+                            id="expenseInstallments"
+                            min="1"
+                            max="60"
+                            value="1"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Categoria
+                        </label>
+
+                        <select id="expenseCategory">
+
+                            <option value="🛒 Mercado">
+                                🛒 Mercado
+                            </option>
+
+                            <option value="👕 Roupas">
+                                👕 Roupas
+                            </option>
+
+                            <option value="🍔 Alimentação">
+                                🍔 Alimentação
+                            </option>
+
+                            <option value="🏠 Casa">
+                                🏠 Casa
+                            </option>
+
+                            <option value="🚗 Transporte">
+                                🚗 Transporte
+                            </option>
+
+                            <option value="💻 Tecnologia">
+                                💻 Tecnologia
+                            </option>
+
+                            <option value="🎮 Lazer">
+                                🎮 Lazer
+                            </option>
+
+                            <option value="📦 Outros">
+                                📦 Outros
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="btn-secondary"
+                        onclick="closeModal('expenseModal')"
+                    >
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn-primary"
+                    >
+                        Salvar gasto
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <div class="toast" id="toast">
+        Salvo com sucesso!
+    </div>
+
+
+    <script>
+
+        /* =========================
+           BANCO LOCAL
+        ========================= */
+
+        let cards = JSON.parse(
+            localStorage.getItem("meuFinanceiro_cards")
+        ) || [];
+
+        let expenses = JSON.parse(
+            localStorage.getItem("meuFinanceiro_expenses")
+        ) || [];
+
+        let safe = JSON.parse(
+            localStorage.getItem("meuFinanceiro_safe")
+        ) || [];
+
+        const SAFE_GOAL = 7260;
+
+
+        /* =========================
+           FORMATAÇÃO
+        ========================= */
+
+        function money(value) {
+
+            return Number(value).toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL"
+            });
+
+        }
+
+
+        /* =========================
+           SALVAR
+        ========================= */
+
+        function saveData() {
+
+            localStorage.setItem(
+                "meuFinanceiro_cards",
+                JSON.stringify(cards)
+            );
+
+            localStorage.setItem(
+                "meuFinanceiro_expenses",
+                JSON.stringify(expenses)
+            );
+
+            localStorage.setItem(
+                "meuFinanceiro_safe",
+                JSON.stringify(safe)
+            );
+
+        }
+
+
+        /* =========================
+           MENU
+        ========================= */
+
+        function showPage(pageId) {
+
+            document.querySelectorAll(".page").forEach(page => {
+
+                page.classList.remove("active");
+
+            });
+
+
+            document
+                .getElementById(pageId)
+                .classList.add("active");
+
+
+            document.querySelectorAll(".menu-btn").forEach(button => {
+
+                button.classList.remove("active");
+
+                if (button.dataset.page === pageId) {
+                    button.classList.add("active");
+                }
+
+            });
+
+
+            if (pageId === "cartoes") {
+                renderCards();
+            }
+
+            if (pageId === "gastos") {
+                renderExpenses();
+            }
+
+            if (pageId === "parcelas") {
+                renderInstallments();
+            }
+
+            if (pageId === "cofre") {
+                renderSafe();
+            }
+
+        }
+
+
+        document.querySelectorAll(".menu-btn").forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                showPage(button.dataset.page);
+
+            });
+
+        });
+
+
+        /* =========================
+           MODAIS
+        ========================= */
+
+        function openCardModal() {
+
+            document
+                .getElementById("cardModal")
+                .classList.add("show");
+
+        }
+
+
+        function openExpenseModal() {
+
+            if (cards.length === 0) {
+
+                alert(
+                    "Cadastre pelo menos um cartão antes de adicionar um gasto."
+                );
+
+                showPage("cartoes");
+
+                return;
+
+            }
+
+
+            populateCardSelect();
+
+            document
+                .getElementById("expenseModal")
+                .classList.add("show");
+
+        }
+
+
+        function closeModal(id) {
+
+            document
+                .getElementById(id)
+                .classList.remove("show");
+
+        }
+
+
+        window.addEventListener("click", function(event) {
+
+            if (event.target.classList.contains("modal")) {
+
+                event.target.classList.remove("show");
+
+            }
+
+        });
+
+
+        /* =========================
+           CARTÕES
+        ========================= */
+
+        document
+            .getElementById("cardForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+
+                const card = {
+
+                    id: Date.now(),
+
+                    name: document
+                        .getElementById("cardName")
+                        .value
+                        .trim(),
+
+                    limit: Number(
+                        document
+                            .getElementById("cardLimit")
+                            .value
+                    ),
+
+                    closing: Number(
+                        document
+                            .getElementById("cardClosing")
+                            .value
+                    ),
+
+                    due: Number(
+                        document
+                            .getElementById("cardDue")
+                            .value
+                    )
+
+                };
+
+
+                cards.push(card);
+
+                saveData();
+
+                this.reset();
+
+                closeModal("cardModal");
+
+                renderCards();
+
+                updateDashboard();
+
+                showToast("Cartão adicionado!");
+
+            });
+
+
+        function getCardUsed(cardId) {
+
+            return expenses
+                .filter(expense => expense.cardId == cardId)
+                .reduce((total, expense) => {
+
+                    return total + Number(expense.value);
+
+                }, 0);
+
+        }
+
+
+        function renderCards() {
+
+            const container =
+                document.getElementById("cardsList");
+
+
+            if (cards.length === 0) {
+
+                container.innerHTML = `
+
+                    <div class="panel" style="grid-column:1/-1;text-align:center;padding:50px;">
+
+                        <div style="font-size:45px;margin-bottom:15px;">
+                            💳
+                        </div>
+
+                        <h3>
+                            Nenhum cartão cadastrado
+                        </h3>
+
+                        <p style="color:#758078;margin-top:8px;">
+                            Adicione seu primeiro cartão para começar.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            container.innerHTML = cards.map(card => {
+
+                const used = getCardUsed(card.id);
+
+                const percent = card.limit > 0
+                    ? Math.min((used / card.limit) * 100, 100)
+                    : 0;
+
+                const available =
+                    Math.max(card.limit - used, 0);
+
+
+                return `
+
+                    <div class="credit-card">
+
+                        <div class="credit-card-top">
+
+                            <div>
+
+                                <div class="credit-card-name">
+                                    💳 ${escapeHtml(card.name)}
+                                </div>
+
+                                <div class="credit-card-number">
+                                    Cartão pessoal
+                                </div>
+
+                            </div>
+
+                            <button
+                                class="btn-danger"
+                                onclick="deleteCard(${card.id})"
+                            >
+                                Excluir
+                            </button>
+
+                        </div>
+
+
+                        <div class="limit-info">
+
+                            <span>
+                                Utilizado ${money(used)}
+                            </span>
+
+                            <span>
+                                Limite ${money(card.limit)}
+                            </span>
+
+                        </div>
+
+
+                        <div class="limit-bar">
+
+                            <div
+                                class="limit-fill"
+                                style="width:${percent}%"
+                            ></div>
+
+                        </div>
+
+
+                        <div class="card-bottom">
+
+                            <div class="small-info">
+
+                                Disponível
+
+                                <strong>
+                                    ${money(available)}
+                                </strong>
+
+                            </div>
+
+
+                            <div class="small-info">
+
+                                Fecha
+
+                                <strong>
+                                    Dia ${card.closing}
+                                </strong>
+
+                            </div>
+
+
+                            <div class="small-info">
+
+                                Vence
+
+                                <strong>
+                                    Dia ${card.due}
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }).join("");
+
+        }
+
+
+        function deleteCard(id) {
+
+            const hasExpenses = expenses.some(
+                expense => expense.cardId == id
+            );
+
+
+            if (hasExpenses) {
+
+                alert(
+                    "Não é possível excluir este cartão porque existem gastos vinculados a ele."
+                );
+
+                return;
+
+            }
+
+
+            if (!confirm("Excluir este cartão?")) {
+                return;
+            }
+
+
+            cards = cards.filter(card => card.id != id);
+
+            saveData();
+
+            renderCards();
+
+            updateDashboard();
+
+            showToast("Cartão excluído.");
+
+        }
+
+
+        /* =========================
+           GASTOS
+        ========================= */
+
+        function populateCardSelect() {
+
+            const select =
+                document.getElementById("expenseCard");
+
+
+            select.innerHTML = cards.map(card => `
+
+                <option value="${card.id}">
+                    ${escapeHtml(card.name)}
+                </option>
+
+            `).join("");
+
+        }
+
+
+        document
+            .getElementById("expenseForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+
+                const cardId = Number(
+                    document
+                        .getElementById("expenseCard")
+                        .value
+                );
+
+
+                const value = Number(
+                    document
+                        .getElementById("expenseValue")
+                        .value
+                );
+
+
+                const installments = Number(
+                    document
+                        .getElementById("expenseInstallments")
+                        .value
+                );
+
+
+                const expense = {
+
+                    id: Date.now(),
+
+                    name: document
+                        .getElementById("expenseName")
+                        .value
+                        .trim(),
+
+                    cardId: cardId,
+
+                    value: value,
+
+                    installments: installments,
+
+                    category: document
+                        .getElementById("expenseCategory")
+                        .value,
+
+                    date: new Date().toISOString()
+
+                };
+
+
+                expenses.push(expense);
+
+                saveData();
+
+                this.reset();
+
+                closeModal("expenseModal");
+
+                renderExpenses();
+
+                renderInstallments();
+
+                renderCards();
+
+                updateDashboard();
+
+                showToast("Gasto adicionado!");
+
+            });
+
+
+        function getCardName(cardId) {
+
+            const card = cards.find(
+                card => card.id == cardId
+            );
+
+            return card
+                ? card.name
+                : "Cartão removido";
+
+        }
+
+
+        function renderExpenses() {
+
+            const tbody =
+                document.getElementById("expensesTable");
+
+
+            if (expenses.length === 0) {
+
+                tbody.innerHTML = `
+
+                    <tr>
+
+                        <td colspan="6" class="empty">
+                            Nenhum gasto cadastrado.
+                        </td>
+
+                    </tr>
+
+                `;
+
+                return;
+
+            }
+
+
+            tbody.innerHTML = expenses
+                .slice()
+                .reverse()
+                .map(expense => {
+
+                    const installmentValue =
+                        expense.value /
+                        expense.installments;
+
+
+                    return `
+
+                        <tr>
+
+                            <td>
+                                <strong>
+                                    ${escapeHtml(expense.name)}
+                                </strong>
+
+                                <div style="color:#667169;font-size:11px;margin-top:4px;">
+                                    ${escapeHtml(expense.category)}
+                                </div>
+                            </td>
+
+                            <td>
+                                ${escapeHtml(getCardName(expense.cardId))}
+                            </td>
+
+                            <td>
+                                ${money(expense.value)}
+                            </td>
+
+                            <td>
+                                ${expense.installments}x
+                            </td>
+
+                            <td>
+                                ${money(installmentValue)}
+                            </td>
+
+                            <td>
+
+                                <button
+                                    class="btn-danger"
+                                    onclick="deleteExpense(${expense.id})"
+                                >
+                                    Excluir
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                    `;
+
+                }).join("");
+
+        }
+
+
+        function deleteExpense(id) {
+
+            if (!confirm("Excluir este gasto?")) {
+                return;
+            }
+
+
+            expenses = expenses.filter(
+                expense => expense.id != id
+            );
+
+
+            saveData();
+
+            renderExpenses();
+
+            renderInstallments();
+
+            renderCards();
+
+            updateDashboard();
+
+            showToast("Gasto excluído.");
+
+        }
+
+
+        /* =========================
+           PARCELAS
+        ========================= */
+
+        function renderInstallments() {
+
+            const tbody =
+                document.getElementById("installmentsTable");
+
+
+            if (expenses.length === 0) {
+
+                tbody.innerHTML = `
+
+                    <tr>
+
+                        <td colspan="5" class="empty">
+                            Nenhuma parcela cadastrada.
+                        </td>
+
+                    </tr>
+
+                `;
+
+                return;
+
+            }
+
+
+            let rows = [];
+
+
+            expenses.forEach(expense => {
+
+                const value =
+                    expense.value /
+                    expense.installments;
+
+
+                for (
+                    let i = 1;
+                    i <= expense.installments;
+                    i++
+                ) {
+
+                    rows.push({
+
+                        name: expense.name,
+
+                        card: getCardName(
+                            expense.cardId
+                        ),
+
+                        installment: `${i}/${expense.installments}`,
+
+                        value: value
+
+                    });
+
+                }
+
+            });
+
+
+            tbody.innerHTML = rows.map(row => `
+
+                <tr>
+
+                    <td>
+                        ${escapeHtml(row.name)}
+                    </td>
+
+                    <td>
+                        ${escapeHtml(row.card)}
+                    </td>
+
+                    <td>
+                        ${row.installment}
+                    </td>
+
+                    <td>
+                        ${money(row.value)}
+                    </td>
+
+                    <td>
+                        <span class="green">
+                            ● Prevista
+                        </span>
+                    </td>
+
+                </tr>
+
+            `).join("");
+
+        }
+
+
+        /* =========================
+           DASHBOARD
+        ========================= */
+
+        function updateDashboard() {
+
+            const totalCards =
+                expenses.reduce(
+                    (total, expense) =>
+                        total + Number(expense.value),
+                    0
+                );
+
+
+            const futureInstallments =
+                expenses.reduce(
+                    (total, expense) => {
+
+                        const installment =
+                            expense.value /
+                            expense.installments;
+
+                        return total +
+                            installment *
+                            Math.max(
+                                expense.installments - 1,
+                                0
+                            );
+
+                    },
+                    0
+                );
+
+
+            const safeTotal =
+                safe.reduce(
+                    (total, value) =>
+                        total + Number(value),
+                    0
+                );
+
+
+            document
+                .getElementById("dashboardCards")
+                .textContent = money(totalCards);
+
+
+            document
+                .getElementById("dashboardInstallments")
+                .textContent = money(
+                    futureInstallments
+                );
+
+
+            document
+                .getElementById("dashboardSafe")
+                .textContent = money(safeTotal);
+
+
+            document
+                .getElementById("dashboardSafeBig")
+                .textContent = money(safeTotal);
+
+
+            const percent =
+                Math.min(
+                    (safeTotal / SAFE_GOAL) * 100,
+                    100
+                );
+
+
+            document
+                .getElementById("dashboardProgress")
+                .style.width =
+                percent + "%";
+
+
+            document
+                .getElementById("dashboardProgressText")
+                .textContent =
+                percent.toFixed(1) +
+                "% concluído";
+
+
+            renderDashboardExpenses();
+
+        }
+
+
+        function renderDashboardExpenses() {
+
+            const container =
+                document.getElementById(
+                    "dashboardExpenses"
+                );
+
+
+            if (expenses.length === 0) {
+
+                container.innerHTML = `
+
+                    <div class="expense">
+
+                        <div class="expense-left">
+
+                            <div class="expense-icon">
+                                🛒
+                            </div>
+
+                            <div>
+
+                                <div class="expense-name">
+                                    Nenhum gasto cadastrado
+                                </div>
+
+                                <div class="expense-info">
+                                    Seus gastos aparecerão aqui
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="expense-value">
+                            —
+                        </div>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            container.innerHTML =
+                expenses
+                    .slice()
+                    .reverse()
+                    .slice(0, 5)
+                    .map(expense => `
+
+                        <div class="expense">
+
+                            <div class="expense-left">
+
+                                <div class="expense-icon">
+                                    ${expense.category.split(" ")[0]}
+                                </div>
+
+                                <div>
+
+                                    <div class="expense-name">
+                                        ${escapeHtml(expense.name)}
+                                    </div>
+
+                                    <div class="expense-info">
+                                        ${escapeHtml(getCardName(expense.cardId))}
+                                        • ${expense.installments}x
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="expense-value">
+                                ${money(expense.value)}
+                            </div>
+
+                        </div>
+
+                    `)
+                    .join("");
+
+        }
+
+
+        /* =========================
+           COFRE
+        ========================= */
+
+        function renderSafe() {
+
+            const grid =
+                document.getElementById(
+                    "challengeGrid"
+                );
+
+
+            grid.innerHTML = "";
+
+
+            for (
+                let i = 1;
+                i <= 120;
+                i++
+            ) {
+
+                const button =
+                    document.createElement("button");
+
+
+                button.className =
+                    "challenge";
+
+
+                button.textContent = i;
+
+
+                if (safe.includes(i)) {
+
+                    button.classList.add(
+                        "completed"
+                    );
+
+                }
+
+
+                button.onclick = () => {
+
+                    toggleSafe(i);
+
+                };
+
+
+                grid.appendChild(button);
+
+            }
+
+
+            updateSafeStats();
+
+        }
+
+
+        function toggleSafe(value) {
+
+            if (safe.includes(value)) {
+
+                safe = safe.filter(
+                    number => number !== value
+                );
+
+                showToast(
+                    `R$ ${value},00 retirado do cofre.`
+                );
+
+            } else {
+
+                safe.push(value);
+
+                showToast(
+                    `R$ ${value},00 adicionado ao cofre!`
+                );
+
+            }
+
+
+            saveData();
+
+            renderSafe();
+
+            updateDashboard();
+
+        }
+
+
+        function updateSafeStats() {
+
+            const total =
+                safe.reduce(
+                    (sum, value) =>
+                        sum + Number(value),
+                    0
+                );
+
+
+            const remaining =
+                Math.max(
+                    SAFE_GOAL - total,
+                    0
+                );
+
+
+            const percent =
+                Math.min(
+                    (total / SAFE_GOAL) * 100,
+                    100
+                );
+
+
+            document
+                .getElementById("safeTotal")
+                .textContent =
+                money(total);
+
+
+            document
+                .getElementById("safeRemaining")
+                .textContent =
+                money(remaining);
+
+
+            document
+                .getElementById("safePercent")
+                .textContent =
+                percent.toFixed(1) + "%";
+
+
+            document
+                .getElementById("safeProgress")
+                .style.width =
+                percent + "%";
+
+        }
+
+
+        /* =========================
+           DATA
+        ========================= */
+
+        function updateDate() {
+
+            const now = new Date();
+
+
+            const text =
+                now.toLocaleDateString(
+                    "pt-BR",
+                    {
+                        month: "long",
+                        year: "numeric"
+                    }
+                );
+
+
+            document
+                .getElementById("currentDate")
+                .textContent =
+                text.charAt(0).toUpperCase() +
+                text.slice(1);
+
+        }
+
+
+        /* =========================
+           TOAST
+        ========================= */
+
+        function showToast(message) {
+
+            const toast =
+                document.getElementById("toast");
+
+
+            toast.textContent = message;
+
+            toast.classList.add("show");
+
+
+            setTimeout(() => {
+
+                toast.classList.remove("show");
+
+            }, 2200);
+
+        }
+
+
+        /* =========================
+           SEGURANÇA HTML
+        ========================= */
+
+        function escapeHtml(text) {
+
+            const div =
+                document.createElement("div");
+
+            div.textContent = text;
+
+            return div.innerHTML;
+
+        }
+
+
+        /* =========================
+           INICIALIZAÇÃO
+        ========================= */
+
+        updateDate();
+
+        renderCards();
+
+        renderExpenses();
+
+        renderInstallments();
+
+        renderSafe();
+
+        updateDashboard();
+
+    </script>
 
 </body>
 </html>
